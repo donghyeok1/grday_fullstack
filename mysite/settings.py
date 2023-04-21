@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
-
+import os
 from pathlib import Path
 
 import environ  # django-environ
@@ -53,6 +52,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # third apps
     "django_bootstrap5",
+    "django_liquid",
     # local apps
     "accounts",
 ]
@@ -133,10 +133,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
 STATIC_URL = "static/"
 STATIC_ROOT = env.str(
     "STATIC_ROOT", default=BASE_DIR / "staticfiles"
 )  # collectstatic을 하면 STATIC_ROOT에 지정된 폴더 아래에 모든 static 파일들이 복사됨
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = env.str("MEDIA_ROOT", default=BASE_DIR / "mediafiles")
