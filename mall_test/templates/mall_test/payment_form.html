@@ -1,0 +1,35 @@
+{% extends "mall_test/base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <!-- breadcrumb-section -->
+	
+    <div class="breadcrumb-section breadcrumb-bg">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 offset-lg-2 text-center">
+
+                    <div class="breadcrumb-text">
+
+                        <p>mall_test</p>
+
+                        <h1>결제하기</h1>
+	
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- end breadcrumb section -->
+    <form action="" method="post" novalidate>
+        {#    여기서 novalidate는 장고 단에서 유효성 검사를 한게 아닌, form에서 유효성 검사를 해서 입력하지 않으면 자동으로 채우라는 메시지가 나오는걸 방지하기 위한 코드이다#}
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class="bordered-btn" value="새 결제 만들기" />
+    </form>
+{% endblock %}

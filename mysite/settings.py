@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "django_liquid",
     # local apps
     "accounts",
+    "mall_test",
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,8 @@ MEDIA_ROOT = env.str("MEDIA_ROOT", default=BASE_DIR / "mediafiles")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# 포트원
+PORTONE_SHOP_ID = env.str("PORTONE_SHOP_ID", default="")
+PORTONE_API_KEY = env.str("PORTONE_API_KEY", default="")
+PORTONE_API_SECRET = env.str("PORTONE_API_SECRET", default="")

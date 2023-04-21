@@ -1,0 +1,50 @@
+
+{% extends "mall_test/base.html" %}
+{% block content %}
+    <!-- breadcrumb-section -->
+
+    <div class="breadcrumb-section breadcrumb-bg">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-8 offset-lg-2 text-center">
+
+                    <div class="breadcrumb-text">
+
+                        <p>mall_test</p>
+
+                        <h1>Payment</h1>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end breadcrumb section -->
+    {{ payment_props|json_script:"payment-props" }}
+
+    <script>window.PAYMENT_CHECK_URL = "{{ payment_check_url }}"</script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script>(function (){
+        const IMP = window.IMP;
+        const code = "{{ portone_shop_id }}";
+        IMP.init(code);
+
+        const json_string = document.querySelector("#payment-props").textContent;
+        const props = JSON.parse(json_string);
+        
+        IMP.request_pay(props, function(response){
+            // 콜백함수
+            location.href = window.PAYMENT_CHECK_URL;
+            // 체크를 위한 체크 페이지로 이동
+        });
+    })();
+    </script>
+
+{% endblock %}

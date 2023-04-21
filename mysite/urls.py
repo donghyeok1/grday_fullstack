@@ -23,5 +23,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
+    path("mall_test/", include("mall_test.urls")),
     path("", TemplateView.as_view(template_name="index.html"), name="root"),
+    path("test/", TemplateView.as_view(template_name="root.html"), name="test"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
